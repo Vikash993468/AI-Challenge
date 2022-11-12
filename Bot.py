@@ -73,7 +73,6 @@ class player:
                 return RIGHT
     
     def RECTANGLE(self, B, N, size):
-
         if(self.right != size-1):
             self.right+=1
             return RIGHT
@@ -128,8 +127,3 @@ class player:
             else:
                 return (1,0)
         return (0,0)
-
-
-
-
-
