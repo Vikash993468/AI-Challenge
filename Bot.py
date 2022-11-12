@@ -15,35 +15,34 @@ class player:
         self.left=0
         self.up=0
         self.down=0
-        self.phase1=0
-        self.reach_x=0 
-        self.phase2=0   
-        self.phase2_y=0
+        self.p1=0
+        self.p2=0   
+        self.p1y=0
 
     def move(self,B,N,cur_x,cur_y):
         self.step+=1
         if(self.step==1):
             return (0,0)
         if(self.step==2):
-            self.phase1=1
+            self.p1=1
             
 
-        if self.phase1:
-            if(cur_x!=10 and self.phase1):
+        if self.p1:
+            if(cur_x!=10 and self.p1):
                 return self.RUN(cur_x, 10, N)
             else:
-                self.phase1=0
-                self.phase2_y=(cur_y+6)%N
+                self.p1=0
+                self.p1y=(cur_y+6)%N
                 
                 
-        if self.phase2==0:
-            if(cur_y!= self.phase2_y):
-                return self.make_rect(B, N, 6)
+        if self.p2==0:
+            if(cur_y!= self.p1y):
+                return self.RECTANGLE(B, N, 6)
             else:
                 self.right=0
                 self.left=0
                 self.down=0
-                self.phase2=1
+                self.p2=1
 
         if B[cur_x][(cur_y+1)%N]==0:
             return (0,1)
@@ -73,7 +72,8 @@ class player:
             else:
                 return RIGHT
     
-    def make_rect(self, B, N, size):
+    def RECTANGLE(self, B, N, size):
+
         if(self.right != size-1):
             self.right+=1
             return RIGHT
@@ -128,8 +128,6 @@ class player:
             else:
                 return (1,0)
         return (0,0)
-
-
 
 
 
